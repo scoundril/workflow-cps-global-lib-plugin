@@ -62,7 +62,7 @@ public final class LibraryCachingConfiguration extends AbstractDescribableImpl<L
         // getExcludedVersions().each {
         //     version.contains(it)
         // }
-        return version.contains(getExcludedVersions());
+        // return version.contains(getExcludedVersions());
         return getExcludedVersions().contains(version);
     }
 
