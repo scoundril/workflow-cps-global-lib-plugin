@@ -17,7 +17,6 @@ import java.util.List;
 
 public final class LibraryCachingConfiguration extends AbstractDescribableImpl<LibraryCachingConfiguration> {
     private int refreshTimeMinutes;
-    private Boolean isSubtringSearch;
     private String excludedVersionsStr;
 
     private static final String VERSIONS_SEPARATOR = " ";
@@ -25,9 +24,8 @@ public final class LibraryCachingConfiguration extends AbstractDescribableImpl<L
     public static final String LAST_READ_FILE = "last_read";
     public static final String RETRIEVE_LOCK_FILE = "retrieve.lock";
 
-    @DataBoundConstructor public LibraryCachingConfiguration(int refreshTimeMinutes, Boolean isSubtringSearch, String excludedVersionsStr) {
+    @DataBoundConstructor public LibraryCachingConfiguration(int refreshTimeMinutes, String excludedVersionsStr) {
         this.refreshTimeMinutes = refreshTimeMinutes;
-        this.isSubtringSearch = isSubtringSearch;
         this.excludedVersionsStr = excludedVersionsStr;
     }
 
@@ -43,10 +41,6 @@ public final class LibraryCachingConfiguration extends AbstractDescribableImpl<L
         return refreshTimeMinutes > 0;
     }
 
-    public Boolean getIsSubtringSearch() {
-        return isSubtringSearch;
-    }
-
     public String getExcludedVersionsStr() {
         return excludedVersionsStr;
     }
@@ -59,15 +53,16 @@ public final class LibraryCachingConfiguration extends AbstractDescribableImpl<L
     }
 
     public Boolean isExcluded(String version) {
-        // getExcludedVersions().each {
-        //     version.contains(it)
-        // }
-        // return version.contains(getExcludedVersions());
-        return getExcludedVersions().contains(version);
+        for (String it : getExcludedVersions()){
+            if (version.contains(it)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override public String toString() {
-        return "LibraryCachingConfiguration{refreshTimeMinutes=" + refreshTimeMinutes + ", isSubtringSearch=" + isSubtringSearch + ", excludedVersions="
+        return "LibraryCachingConfiguration{refreshTimeMinutes=" + refreshTimeMinutes + ", excludedVersions="
                 + excludedVersionsStr + '}';
     }
 

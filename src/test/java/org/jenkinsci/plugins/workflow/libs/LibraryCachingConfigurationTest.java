@@ -59,9 +59,9 @@ public class LibraryCachingConfigurationTest {
 
     @Before
     public void createCachingConfiguration() {
-        nullVersionConfig = new LibraryCachingConfiguration(REFRESH_TIME_MINUTES, USE_SUBSTRING_TRUE, NULL_EXCLUDED_VERSION);
-        oneVersionConfig = new LibraryCachingConfiguration(NO_REFRESH_TIME_MINUTES, USE_SUBSTRING_TRUE, ONE_EXCLUDED_VERSION);
-        multiVersionConfig = new LibraryCachingConfiguration(REFRESH_TIME_MINUTES, USE_SUBSTRING_TRUE, MULTIPLE_EXCLUDED_VERSIONS);
+        nullVersionConfig = new LibraryCachingConfiguration(REFRESH_TIME_MINUTES, NULL_EXCLUDED_VERSION);
+        oneVersionConfig = new LibraryCachingConfiguration(NO_REFRESH_TIME_MINUTES, ONE_EXCLUDED_VERSION);
+        multiVersionConfig = new LibraryCachingConfiguration(REFRESH_TIME_MINUTES, MULTIPLE_EXCLUDED_VERSIONS);
     }
 
     @Issue("JENKINS-66045") // NPE getting excluded versions
