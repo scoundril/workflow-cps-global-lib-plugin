@@ -28,9 +28,6 @@ THE SOFTWARE.
     <f:entry title="${%Refresh time in minutes}" field="refreshTimeMinutes">
         <f:number default="0" />
     </f:entry>
-    <f:entry field="isSubtringSearch" title="${%Use substring search instead of exact match}">
-        <f:checkbox/>
-    </f:entry>
     <f:entry title="${%Versions to exclude}" field="excludedVersionsStr">
         <f:textbox />
     </f:entry>
